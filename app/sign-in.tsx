@@ -26,7 +26,7 @@ const SignIn = () => {
                         className={"bg-white shadow-md shadow-zinc-300 rounded-full w-full py-4 mt-5"}
                     >
                         <View className="flex-row items-center justify-center">
-                            <Image source={icons.google} className="w-5 h-5" resizeMode="contain" />
+                            <Image source={images.google} className="w-5 h-5" resizeMode="contain" />
                             <Text className="text-black ml-2 font-rubik-semibold">Sign in with Google</Text>
                         </View>
                     </TouchableOpacity>
