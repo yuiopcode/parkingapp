@@ -11,7 +11,7 @@ const SignIn = () => {
     return (
         <SafeAreaView className={"bg-white h-full"}>
             <ScrollView contentContainerClassName={"h-full"}>
-                <Image source={images.onboarding} className="w-full h-4/6" resizeMode={"contain"} />
+                <Image source={images.onboarding} className="w-full h-4" resizeMode={"contain"} />
 
                 <View>
                     <Text className={"text-base text-center uppercase font-rubik text-black-200"}> Welcome to Restate </Text>
