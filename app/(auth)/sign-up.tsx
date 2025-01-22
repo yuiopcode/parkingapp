@@ -91,14 +91,14 @@ const SignUp = () => {
                     onPress={handleLogin}
                     className={"bg-[#438eff] border border-gray-300 rounded-xl w-full py-4 mt-28 h-14 items-center justify-center"}
                 >
-                        <Text className="text-white ml-2 font-rubik-semibold">Continue with Google</Text>
+                        <Text className="text-white ml-2 font-rubik-semibold">Continue</Text>
                 </TouchableOpacity>
                 <View className={"items-center justify-center mt-4"}>
                     <Text className="w-[263px] text-center">
                         <Text className="text-black/70 text-sm font-normal font-['Inter'] leading-[17.5px]">
                             By creating an account or signing you agree to our{' '}
                         </Text>
-                        <Text className="text-black text-sm font-semibold font-['Inter'] underline leading-[17.5px]">
+                        <Text className="text-black text-sm font-semibold font-['Inter'] underline leading-[17.5px] touch-auto">
                             Terms and Conditions
                         </Text>
                     </Text>
