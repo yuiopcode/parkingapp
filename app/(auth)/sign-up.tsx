@@ -13,13 +13,13 @@ const SignUp = () => {
     const navigation = useNavigation();
 
     const handleArrowClick = () => {
-        navigation.goBack(); // Navigate to the previous screen
+        navigation.goBack();
     };
 
     const [value, setValue] = useState('');
     const [value1, setValue1] = useState('');
     const [value2, setValue2] = useState('');
-    const [isFocused, setIsFocused] = useState(false); // Moved isFocused to parent state
+    const [isFocused, setIsFocused] = useState(false);
     const handleLogin =() => {}
 
     const inputClassName = `w-full h-14 border-[#d1d1d1]  border rounded-md p-5 text-black mt-1.5 ${
@@ -32,7 +32,7 @@ const SignUp = () => {
                 {/* Top row with arrow on the left and logo on the right */}
                 <View className="flex-row w-full items-center justify-between">
                     <TouchableOpacity onPress={handleArrowClick}>
-                        <ArrowLeft size={24} color={"#000000"} />
+                        <ArrowLeft className="size-24 color-black"/>
                     </TouchableOpacity>
                     <Image source={images.logoBlue} className="w-7 h-8 relative overflow-hidden" />
                 </View>
