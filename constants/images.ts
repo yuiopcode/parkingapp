@@ -8,6 +8,10 @@ import whiteGradient from "@/assets/images/white-gradient.png";
 import map from "@/assets/images/map.png";
 import noResult from "@/assets/images/no-result.png";
 import welcomeCar from "@/assets/images/welcome-car.png";
+import logoBlue from "@/assets/icons/logo_blue.png";
+import google from "@/assets/icons/google.png";
+import apple from "@/assets/images/apple.png";
+
 
 export default {
   onboarding,
@@ -20,4 +24,8 @@ export default {
   map,
   noResult,
   welcomeCar,
+  logoBlue,
+  google,
+  apple,
+
 };

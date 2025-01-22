@@ -11,7 +11,7 @@ const SignIn = () => {
     return (
         <SafeAreaView className={"bg-white h-full"}>
             <ScrollView contentContainerClassName={"h-full"}>
-                <Image source={images.onboarding} className="w-full h-4/6" resizeMode={"contain"} />
+                <Image source={images.onboarding} className="w-full h-4" resizeMode={"contain"} />
 
                 <View>
                     <Text className={"text-base text-center uppercase font-rubik text-black-200"}> Welcome to Restate </Text>
@@ -26,7 +26,7 @@ const SignIn = () => {
                         className={"bg-white shadow-md shadow-zinc-300 rounded-full w-full py-4 mt-5"}
                     >
                         <View className="flex-row items-center justify-center">
-                            <Image source={icons.google} className="w-5 h-5" resizeMode="contain" />
+                            <Image source={images.google} className="w-5 h-5" resizeMode="contain" />
                             <Text className="text-black ml-2 font-rubik-semibold">Sign in with Google</Text>
                         </View>
                     </TouchableOpacity>
