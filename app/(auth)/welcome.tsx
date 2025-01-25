@@ -21,15 +21,15 @@ const Onboarding = () => {
 
 
                 <View className="flex-1 justify-center items-center ">
-                    <Text className="text-black text-center text-3xl font-bold font-rubik-bold mt-6 px-12">
+                    <Text className="text-black text-center text-3xl font-bold font-poppins-bold mt-6 px-12">
                         Let's start
                     </Text>
 
-                    <Text className="text-blue-500 text-center text-3xl font-bold font-rubik-bold px-12">
+                    <Text className="text-blue-500 text-center text-3xl font-bold font-poppins-bold px-12">
                         Your parking journey!
                     </Text>
 
-                    <Text className="text-black text-center text-m font-rubik-light mt-5 px-6">
+                    <Text className="text-black text-center text-m font-poppins-light mt-5 px-6">
                         Simplify your parking with fast, secure, and convenient solutions. Log in to get started!
                     </Text>
                 </View>

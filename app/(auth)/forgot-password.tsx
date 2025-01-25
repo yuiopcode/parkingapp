@@ -43,8 +43,8 @@ const ForgotPassword = () => {
                         <Image source={images.logoBlue} className="w-7 h-8 relative overflow-hidden" />
                     </View>
                     <View className="flex-col mt-8">
-                        <Text className="text-black text-3xl font-semibold font-['Roboto'] leading-[30px] mb-2">Password recovery</Text>
-                        <Text className="text-black text-m font-normal font-['Roboto'] leading-[21px] mt-2">
+                        <Text className="text-black text-3xl font-semibold font-poppins leading-[30px] mb-2">Password recovery</Text>
+                        <Text className="text-black text-m font-normal font-poppins leading-[21px] mt-2">
                             Enter your password and we sent a recovery code{'\n'}to your email!
                         </Text>
                     </View>
