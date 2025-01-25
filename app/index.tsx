@@ -16,8 +16,9 @@ export default function Index() {
         <Link href="/profile"> profile </Link>
         <Link href="/properties/1"> Property </Link>
         <Link href="/(auth)/welcome"> Welcome </Link>
-        <Link href="/(auth)/sign-in"> Sign in real </Link>
-        <Link href="/(auth)/sign-up"> Sign up real </Link>
+        <Link href="/(auth)/sign-in"> Login </Link>
+        <Link href="/(auth)/sign-up"> Sign up </Link>
+        <Link href="/(auth)/forgot-password">Passwd recovery</Link>
     </View>
   );
 }

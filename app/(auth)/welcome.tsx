@@ -3,8 +3,8 @@ import React from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 import { ArrowLeft } from 'lucide-react-native';
 
-import images from '@/constants/images';
-import icons from '@/constants/icons';
+import images from '../../constants/images';
+import icons from '../../constants/icons';
 
 const Onboarding = () => {
 

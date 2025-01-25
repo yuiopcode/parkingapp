@@ -5,12 +5,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        rubik: ["Rubik-Regular", "sans-serif"],
-        "rubik-bold": ["Rubik-Bold", "sans-serif"],
-        "rubik-extrabold": ["Rubik-ExtraBold", "sans-serif"],
-        "rubik-medium": ["Rubik-Medium", "sans-serif"],
-        "rubik-semibold": ["Rubik-SemiBold", "sans-serif"],
-        "rubik-light": ["Rubik-Light", "sans-serif"],
+        poppins: ["Poppins-Regular", "sans-serif"],
+        "poppins-bold": ["Poppins-Bold", "sans-serif"],
+        "poppins-medium": ["Poppins-Medium", "sans-serif"],
+        "poppins-semibold": ["Poppins-SemiBold", "sans-serif"],
+        "poppins-light": ["Poppins-Light", "sans-serif"],
+        "popping-extrabold": ["Poppins-ExtraBold", "sans-serif"],
+        "poppins-italic": ["Poppins-Italic", "sans-serif"],
       },
       colors: {
         primary: {
