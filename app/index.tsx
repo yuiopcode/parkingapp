@@ -19,6 +19,7 @@ export default function Index() {
         <Link href="/(auth)/sign-in"> Login </Link>
         <Link href="/(auth)/sign-up"> Sign up </Link>
         <Link href="/(auth)/forgot-password">Passwd recovery</Link>
+        <Link href="/(root)/(tabs)/notifications">Notifications</Link>
     </View>
   );
 }

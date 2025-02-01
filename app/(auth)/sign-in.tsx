@@ -116,7 +116,7 @@ const SignIn = () => {
                             {/* Forgot Password Text */}
                             <View className="flex-row justify-end mt-2">
                                 <TouchableOpacity>
-                                    <Text className="text-[#535353] text-base font-normal font-['Roboto']">Forgot password?</Text>
+                                    <Text className="text-blue-500 text-base font-normal font-['Roboto']">Forgot password?</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>

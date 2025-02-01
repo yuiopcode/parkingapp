@@ -13,14 +13,14 @@ const Onboarding = () => {
     return (
         <SafeAreaView className={"bg-white h-full "}>
 
-            <View className="w-[400px] h-[420px] flex-col items-center inline-flex mt-[150px]">
+            <View className="w-full h-[420px] flex-col items-center inline-flex mt-[120px]">
 
-                <View className="justify-center flex-1 align-middle">
-                    <Image source={images.welcomeCar} className={"align-middle"} resizeMode={"contain"} style={{ width: 320, height: 210}} />
+                <View className="flex-1 align-middle items-center justify-center">
+                    <Image source={images.welcomeCar} className={"align-middle"} resizeMode="contain" style={{ width: 320, height: 210}} />
                 </View>
 
 
-                <View className="flex-1 justify-center items-center ">
+                <View className="flex-1 justify-center items-center mt-8">
                     <Text className="text-black text-center text-3xl font-bold font-poppins-bold mt-6 px-12">
                         Let's start
                     </Text>
@@ -35,20 +35,20 @@ const Onboarding = () => {
                 </View>
 
             </View>
-                <></>
-            <View className="">
+
+            <View className="mb-5">
                 <TouchableOpacity
                     onPress={handleLogin}
                     className={"bg-[#438eff] rounded-xl w-full-40 py-4 mx-5 mt-[110px] h-14 items-center justify-center"}
                 >
-                    <Text className="text-white ml-2 font-rubik-semibold">Login</Text>
+                    <Text className="text-white ml-2 font-poppins-semibold">Login</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    className="border-2 border-blue-500 w-full-40 py-4 mx-5 h-14 mt-2 mb-5 bg-white rounded-lg"
+                    className="border-2 border-blue-500 w-full-40 mx-5 h-14 mt-2 mb-5 bg-white items-center justify-center rounded-lg"
                     onPress={() => console.log('Button Pressed')}
                 >
-                    <Text className="text-blue-500 text-center font-bold">Sign Up</Text>
+                    <Text className="text-blue-500 text-center font-poppins-semibold">Sign Up</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
