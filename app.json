@@ -9,8 +9,10 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "bundleIdentifier": "com.company.parkingapp",
       "config": {
-        "usesNonExemptEncryption": false
+        "usesNonExemptEncryption": false,
+        "googleMapsApiKey": "AIzaSyBuRcW2yePYmdWZkh4sQoZ49kPMUueuFHY"
       },
       "supportsTablet": true
     },

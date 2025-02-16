@@ -1,10 +1,23 @@
-import {Text, TouchableOpacity, View, Image, TextInput, StyleSheet, Platform, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView} from 'react-native';
+import {
+    Text,
+    TouchableOpacity,
+    View,
+    Image,
+    TextInput,
+    StyleSheet,
+    Platform,
+    Keyboard,
+    TouchableWithoutFeedback,
+    KeyboardAvoidingView,
+    Alert
+} from 'react-native';
 import React, {useState} from 'react';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeft } from "lucide-react-native";
 import { useNavigation } from '@react-navigation/native';
 import images from '@/constants/images';
-import icons from "@/constants/icons";
+import icons from "@/constants/icons";  
+import * as SecureStore from "expo-secure-store";
 
 
 
@@ -16,9 +29,37 @@ const SignUp = () => {
         navigation.goBack(); // Navigate to the previous screen
     };
 
-    const [value, setValue] = useState('');
-    const [value1, setValue1] = useState('');
-    const [value2, setValue2] = useState('');
+    const handleSubmit = async () => {
+
+        try {
+            const response = await fetch('/api/v1/security/register/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                await SecureStore.setItemAsync('jwt_token', data.token);
+                Alert.alert('Registration Successful', 'You have successfully registered!');
+            } else {
+                Alert.alert('Registration Failed', data.message || 'Something went wrong.');
+            }
+        } catch (error) {
+            Alert.alert('Error', 'An error occurred during registration.');
+        }
+
+    };
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
     const [isFocused, setIsFocused] = useState(false); // Moved isFocused to parent state
     const handleLogin =() => {}
 
@@ -57,8 +98,8 @@ const SignUp = () => {
                                 className="w-full h-14 border border-gray-300 rounded-md p-5 text-black mt-2"
                                 placeholder="Your email"
                                 placeholderTextColor="#828282"
-                                value={value}
-                                onChangeText={setValue}
+                                value={email}
+                                onChangeText={setEmail}
                             />
                         </View>
 
@@ -69,8 +110,8 @@ const SignUp = () => {
                                 className="w-full h-14 border border-gray-300 rounded-md p-5 text-black mt-1.5"
                                 placeholder="Password"
                                 placeholderClassName={"text-color-black"}
-                                value={value1}
-                                onChangeText={setValue1}
+                                value={password}
+                                onChangeText={setPassword}
                                 secureTextEntry
                             />
                         </View>
@@ -82,8 +123,8 @@ const SignUp = () => {
                                 className={inputClassName} // Use the extracted inputClassName
                                 placeholder="Repeat password"
                                 placeholderTextColor="#7b7b7b"
-                                value={value2}
-                                onChangeText={setValue2}
+                                value={passwordConfirm}
+                                onChangeText={setPasswordConfirm}
                                 secureTextEntry
                                 onFocus={() => setIsFocused(true)} // Set isFocused to true on focus
                                 onBlur={() => setIsFocused(false)} // Set isFocused to false on blur
@@ -91,7 +132,7 @@ const SignUp = () => {
                         </View>
 
                         <TouchableOpacity
-                            onPress={handleLogin}
+                            onPress={handleSubmit}
                             className={"bg-[#438eff] rounded-xl w-full py-4 mt-28 h-14 items-center justify-center"}
                         >
                             <Text className="text-white ml-2 font-rubik-semibold">Continue</Text>

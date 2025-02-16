@@ -22,8 +22,9 @@ const SignIn = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false); // Controls password visibility
 
     const handleArrowClick = () => {
-        navigation.goBack();
+        /*navigation.goBack();*/
     };
+
 
     const handleLogin = async () => {
 

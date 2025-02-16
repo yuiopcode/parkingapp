@@ -2,14 +2,16 @@ import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native'
 import React from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 import { ArrowLeft } from 'lucide-react-native';
-
+import { NavigationContainer } from '@react-navigation/native'; // импортируем NavigationContainer
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import images from '../../constants/images';
 import icons from '../../constants/icons';
+import {createNavigationContainerRef, useNavigation} from "@react-navigation/native";
 
 const Onboarding = () => {
 
     const handleLogin =() => {};
-
+    const navigation = useNavigation();
     return (
         <SafeAreaView className={"bg-white h-full "}>
 
@@ -38,8 +40,8 @@ const Onboarding = () => {
 
             <View className="mb-5">
                 <TouchableOpacity
-                    onPress={handleLogin}
                     className={"bg-[#438eff] rounded-xl w-full-40 py-4 mx-5 mt-[110px] h-14 items-center justify-center"}
+                    onPress={() => navigation.navigate('SignIn')}
                 >
                     <Text className="text-white ml-2 font-poppins-semibold">Login</Text>
                 </TouchableOpacity>

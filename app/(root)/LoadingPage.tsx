@@ -1,11 +1,11 @@
 import {View, Text} from 'react-native'
 import React from 'react'
 
-const AuthContext = () => {
+const LoadingPage = () => {
     return (
         <View>
-            <Text>AuthContext</Text>
+            <Text>LoadingPage</Text>
         </View>
     )
 }
-export default AuthContext
+export default LoadingPage
