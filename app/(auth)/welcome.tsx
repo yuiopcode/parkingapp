@@ -6,12 +6,15 @@ import { NavigationContainer } from '@react-navigation/native'; // импорт�
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import images from '../../constants/images';
 import icons from '../../constants/icons';
+import { useRouter } from 'expo-router';
 import {createNavigationContainerRef, useNavigation} from "@react-navigation/native";
 
 const Onboarding = () => {
 
     const handleLogin =() => {};
-    const navigation = useNavigation();
+    const router = useRouter();
+
+
     return (
         <SafeAreaView className={"bg-white h-full "}>
 
@@ -41,14 +44,15 @@ const Onboarding = () => {
             <View className="mb-5">
                 <TouchableOpacity
                     className={"bg-[#438eff] rounded-xl w-full-40 py-4 mx-5 mt-[110px] h-14 items-center justify-center"}
-                    onPress={() => navigation.navigate('SignIn')}
+                    onPress={() => router.push('/(auth)/sign-in')
+                }
                 >
                     <Text className="text-white ml-2 font-poppins-semibold">Login</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     className="border-2 border-blue-500 w-full-40 mx-5 h-14 mt-2 mb-5 bg-white items-center justify-center rounded-lg"
-                    onPress={() => console.log('Button Pressed')}
+                    onPress={() => router.push('/(auth)/sign-up')}
                 >
                     <Text className="text-blue-500 text-center font-poppins-semibold">Sign Up</Text>
                 </TouchableOpacity>

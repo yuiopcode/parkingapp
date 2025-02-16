@@ -14,7 +14,7 @@ import {
     User
 } from 'lucide-react-native';
 
-import images from '../../../constants/images';
+import images from '../../constants/images';
 import BottomMenu from "@/app/components/BottomMenu";
 
 const ParkingComponent = () => {

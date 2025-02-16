@@ -17,8 +17,15 @@ export default class UserStore {
     }
 
     setIsAuthenticated(isAuthenticated: boolean, authentication: IAuthResponse) {
-        setAccessToken(authentication.accessToken);
-        setRefreshToken(authentication.refreshToken);
+        setAccessToken(authentication.accessToken).then(
+            () => console.log("setAccessToken success"));
+        setRefreshToken(authentication.refreshToken).then(
+            () => console.log("setRefreshToken success"));
+        console.log(
+            "setIsAuthenticated",
+            isAuthenticated,
+            authentication
+        );
         this.isAuthenticated = isAuthenticated;
     }
 
@@ -29,13 +36,16 @@ export default class UserStore {
     signUpAuthentication = async ({email, password}: { email: string, password: string }) => {
         this.setIsLoading(true);
 
+        console.log("signUpAuthentication");
         try{
             const request = await AuthService.signUpByCredentials({email, password});
             if(request.data) {
                 const authResponse: IAuthResponse = request.data;
                 this.setIsAuthenticated(true, authResponse)
+                console.log("authResponse", authResponse);
             } else {
                 throw new AxiosError("unexpected message");
+                console.log("unexpected message");
             }
         } catch(e:unknown) {
             handleError(e,"awibka");
@@ -74,7 +84,7 @@ export default class UserStore {
 
         this.setIsLoading(true);
 
-        const refreshToken = getRefreshToken();
+        const refreshToken = await getRefreshToken();
         console.log("refreshToken", refreshToken);
 
         if (refreshToken) {

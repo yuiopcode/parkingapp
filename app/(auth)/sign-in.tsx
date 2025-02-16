@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import {
     Text,
     TouchableOpacity,
@@ -12,46 +12,31 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Eye, EyeOff } from 'lucide-react-native'; // Using icons for eye toggle
 import { useNavigation } from '@react-navigation/native';
 import images from '../../constants/images';
+import {useExpoRouter} from "expo-router/build/global-state/router-store";
+import {Context} from "@/app/_layout";
 
 const SignIn = () => {
-    const navigation = useNavigation();
+    const {userStore} = useContext(Context)
 
     // Email and Password states
     const [email, setEmail] = useState('');
+    const router = useExpoRouter();
+
     const [password, setPassword] = useState('');
     const [isPasswordVisible, setIsPasswordVisible] = useState(false); // Controls password visibility
 
     const handleArrowClick = () => {
-        /*navigation.goBack();*/
+        router.navigate("(auth)/welcome")
     };
 
 
     const handleLogin = async () => {
-
-        try {
-            const response = await fetch('/api/v1/security/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email,
-                    password,
-                }),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                await SecureStore.setItemAsync('jwt_token', data.token);
-                Alert.alert('Login Successful', 'You have successfully logged in!');
-            } else {
-                Alert.alert('Login Failed', data.message || 'Something went wrong.');
-            }
-        } catch (error) {
-            Alert.alert('Error', 'An error occurred during login.');
-        }
-
+        userStore.signInAuthentication({
+            password, email
+        }).then(async (response) => {
+            console.log("User signed in successfully")
+            router.navigate("(root)/home")
+        })
     };
 
     return (

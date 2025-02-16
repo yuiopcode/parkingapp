@@ -11,57 +11,49 @@ import {
     KeyboardAvoidingView,
     Alert
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeft } from "lucide-react-native";
 import { useNavigation } from '@react-navigation/native';
 import images from '@/constants/images';
 import icons from "@/constants/icons";  
 import * as SecureStore from "expo-secure-store";
+import {useExpoRouter} from "expo-router/build/global-state/router-store";
+import {Context} from "@/app/_layout";
 
 
 
 
 const SignUp = () => {
-    const navigation = useNavigation();
-
-    const handleArrowClick = () => {
-        navigation.goBack(); // Navigate to the previous screen
-    };
-
-    const handleSubmit = async () => {
-
-        try {
-            const response = await fetch('/api/v1/security/register/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email,
-                    password,
-                }),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                await SecureStore.setItemAsync('jwt_token', data.token);
-                Alert.alert('Registration Successful', 'You have successfully registered!');
-            } else {
-                Alert.alert('Registration Failed', data.message || 'Something went wrong.');
-            }
-        } catch (error) {
-            Alert.alert('Error', 'An error occurred during registration.');
-        }
-
-    };
+    const router = useExpoRouter();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [isFocused, setIsFocused] = useState(false); // Moved isFocused to parent state
     const handleLogin =() => {}
+
+    const {userStore} = useContext(Context)
+
+    const handleArrowClick = () => {
+        router.navigate("(auth)/welcome"); // Navigate to the previous screen
+    };
+
+    const handleSubmit = async () => {
+        console.log("Submit")
+        if (email.length > 0 && password.length > 0 && passwordConfirm.length > 0) {
+            if (password === passwordConfirm) {
+                userStore.signUpAuthentication({
+                    email, password
+                }).then(async (response) => {
+                    console.log("User signed up successfully")
+                })
+                console.log("Proccess")
+            }
+        } else {
+            alert("Please fill all the fields")
+        }
+    };
 
     const inputClassName = `w-full h-14 border-[#d1d1d1]  border rounded-md p-5 text-black mt-1.5 ${
         isFocused ? 'border-blue-300' : 'border-gray-300'
@@ -127,7 +119,7 @@ const SignUp = () => {
                                 onChangeText={setPasswordConfirm}
                                 secureTextEntry
                                 onFocus={() => setIsFocused(true)} // Set isFocused to true on focus
-                                onBlur={() => setIsFocused(false)} // Set isFocused to false on blur
+                                onBlur={() => setIsFocused(true)} // Set isFocused to false on blur
                             />
                         </View>
 

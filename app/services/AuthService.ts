@@ -12,7 +12,7 @@ const signUpByCredentials = async ({email, password}: { email: string, password:
 
 const refreshToken = async ({refreshToken}:{refreshToken:string}) => {
     setTokenType("refresh");
-    return api.post(`/api/v1/security/refresh`, {refreshToken});
+    return api.post(`/api/v1/security/jwt/refresh`, {refreshToken});
 }
 
 export {signInByCredentials, signUpByCredentials,refreshToken}

@@ -1,6 +1,5 @@
 import axios from "axios";
-
-
+import {getAccessToken, getRefreshToken, setAccessToken, setRefreshToken} from "@/app/utils/SecureStore"
 
 
 const api = axios.create({
@@ -12,14 +11,15 @@ export const setTokenType = (type: "access" | "refresh") => {
     api.defaults.headers.common["Token-Type"] = type;
 };
 
-api.interceptors.request.use((config) => {
+api.interceptors.request.use(async (config) => {
     config.headers = config.headers || {};
 
-    const tokenType = config.headers["Token-Type"] || "access"; // Default to access token
-    const tokenKey = tokenType === "refresh" ? "refreshToken" : "accessToken";
-    const token = localStorage.getItem(tokenKey);
+    const tokenType = config.headers["Token-Type"] || "access";
+    const token = tokenType === "refresh" ? await getRefreshToken() : await getAccessToken();
 
     if (token) {
+        console.log("Found token: ", token);
+        console.log("Setting token: ", tokenType);
         config.headers.Authorization = `Bearer ${token}`;
     }
 

@@ -4,17 +4,16 @@ const getRefreshToken = async () => {
     return SecureStore.getItemAsync('refreshToken');
 }
 
-const getAccessToken =  async () => {
+const getAccessToken = async () => {
     return SecureStore.getItemAsync('accessToken');
 }
 
-const setRefreshToken = (refreshToken: string) => {
-    SecureStore.setItem('refreshToken', refreshToken);
+const setRefreshToken = async (refreshToken: string) => {
+    return  SecureStore.setItemAsync('refreshToken', refreshToken);
 }
 
-const setAccessToken = (accessToken: string) => {
-
-    SecureStore.setItem('accessToken', accessToken);
+const setAccessToken = async (accessToken: string) => {
+    return  SecureStore.setItemAsync('accessToken', accessToken);
 }
 
 export {getAccessToken, getRefreshToken, setAccessToken, setRefreshToken}
