@@ -16,7 +16,7 @@ const Onboarding = () => {
 
 
     return (
-        <SafeAreaView className={"bg-white h-full "}>
+        <View className={"bg-white h-full "}>
 
             <View className="w-full h-[420px] flex-col items-center inline-flex mt-[120px]">
 
@@ -57,7 +57,7 @@ const Onboarding = () => {
                     <Text className="text-blue-500 text-center font-poppins-semibold">Sign Up</Text>
                 </TouchableOpacity>
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 export default Onboarding

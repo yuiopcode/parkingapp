@@ -1,10 +1,17 @@
-import {SplashScreen, Stack} from "expo-router";
+import {
+    Navigator,
+    Redirect,
+    SplashScreen,
+    usePathname,
+    Slot
+} from "expo-router";
 
 import "./global.css"
 import {useFonts} from "expo-font";
 import {createContext, useEffect, useState} from "react";
 import UserStore from "@/app/store/UserStore";
-import LoadingPage from "@/app/loading-page";
+import {ActivityIndicator} from "react-native";
+import {View, Text} from 'react-native'
 
 const userStore = new UserStore();
 
@@ -28,40 +35,64 @@ export default function RootLayout() {
 
     const [isAuthenticated, setIsAuthenticated] = useState(false); // Проверка аутентификации
     const [isLoading, setIsLoading] = useState(true);
+    const pathname = usePathname();
 
 
     useEffect(() => {
         async function validateAuth() {
             const isAuth = await userStore.validateAuthentication();
-            setIsAuthenticated(isAuth);
+            setIsAuthenticated(true);
             setIsLoading(false);
             // SplashScreen.hideAsync(); // Скрытие SplashScreen после загрузки всех данных
         }
-        validateAuth();
+
+        validateAuth().then(
+            () => {
+            },
+            (error) => {
+                console.log(error);
+            });
 
         if (fontsLoaded) {
             SplashScreen.hideAsync();
         }
     }, [fontsLoaded, userStore.isAuthenticated]);
 
+
     if (!fontsLoaded || isLoading) {
-        return <LoadingPage />;
+        return (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <ActivityIndicator size="large" color="#0000ff"/>
+                <Text>Загрузка...</Text>
+            </View>
+        );
     }
 
+    if (
+        // !isAuthenticated &&
+        // !(
+        //     pathname.startsWith("/(auth)") &&
+        //     (pathname.includes("sign-in") || pathname.includes("sign-up"))
+        // )
+        false
+    ) {
+        return <Context.Provider value={{userStore}}>
+            <Slot/>
+            <Redirect href="/welcome"/>
+        </Context.Provider>;
+    }
+
+    if (isAuthenticated && pathname.startsWith("/(auth)")) {
+        return <Context.Provider value={{userStore}}>
+            <Slot/>
+            <Redirect href="/(root)/explore"/>
+        </Context.Provider>;
+    }
+
+
+    console.log("isAuth: ", isAuthenticated)
     return (<Context.Provider value={{userStore}}>
-        <Stack
-            screenOptions={{
-                headerShown: false,
-            }}
-        >
-            <Stack.Screen
-                name="(auth)/index"
-                redirect={!isAuthenticated}
-            />
-            <Stack.Screen
-                name="(root)/index"
-                redirect={isAuthenticated}
-            />
-        </Stack>
+        <Slot/>
+        <Redirect href="/(root)/explore"/>
     </Context.Provider>);
 }
