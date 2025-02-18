@@ -8,9 +8,9 @@ import {
     KeyboardAvoidingView, TouchableWithoutFeedback,
 } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { ArrowLeft, Eye, EyeOff } from 'lucide-react-native'; // Using icons for eye toggle
-import { useNavigation } from '@react-navigation/native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {ArrowLeft, Eye, EyeOff} from 'lucide-react-native'; // Using icons for eye toggle
+import {useNavigation} from '@react-navigation/native';
 import images from '../../constants/images';
 import {useExpoRouter} from "expo-router/build/global-state/router-store";
 import {Context} from "@/app/_layout";
@@ -40,21 +40,22 @@ const SignIn = () => {
     };
 
     return (
-        <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <SafeAreaView className="h-full bg-white">
                     <View className="flex-col mx-5 inline-flex my-5 bg-white">
                         {/* Header Section */}
                         <View className="flex-row w-full items-center justify-between">
                             <TouchableOpacity onPress={handleArrowClick}>
-                                <ArrowLeft className={"size-24"} color="#000000" />
+                                <ArrowLeft className={"size-24"} color="#000000"/>
                             </TouchableOpacity>
-                            <Image source={images.logoBlue} className="w-7 h-8 relative overflow-hidden" />
+                            <Image source={images.logoBlue} className="w-7 h-8 relative overflow-hidden"/>
                         </View>
 
                         {/* Title Section */}
                         <View className="flex-col mt-8">
-                            <Text className="text-black text-3xl font-semibold font-['Roboto']  leading-[30px]">Log in</Text>
+                            <Text className="text-black text-3xl font-semibold font-['Roboto']  leading-[30px]">Log
+                                in</Text>
                             <Text className="text-black text-m font-normal font-['Roboto'] leading-[21px] ">
                                 Please fill your details
                             </Text>
@@ -62,7 +63,8 @@ const SignIn = () => {
 
                         {/* Email Input Section */}
                         <View className="flex-col mt-10">
-                            <Text className="text-black text-sm font-normal font-['Roboto'] leading-[21px]">Email address</Text>
+                            <Text className="text-black text-sm font-normal font-['Roboto'] leading-[21px]">Email
+                                address</Text>
                             <TextInput
                                 className="w-full h-14 border border-gray-300 rounded-md p-5 text-black mt-1.5"
                                 placeholder="Your email"
@@ -74,8 +76,10 @@ const SignIn = () => {
 
                         {/* Password Input Section */}
                         <View className="flex-col mt-3">
-                            <Text className="text-black text-sm font-normal font-['Roboto'] leading-[21px]">Password</Text>
-                            <View className="w-full h-14 border border-gray-300 rounded-md flex-row items-center mt-1.5">
+                            <Text
+                                className="text-black text-sm font-normal font-['Roboto'] leading-[21px]">Password</Text>
+                            <View
+                                className="w-full h-14 border border-gray-300 rounded-md flex-row items-center mt-1.5">
                                 {/* Password Input */}
                                 <TextInput
                                     className="flex-1 h-full px-4 text-black"
@@ -92,9 +96,9 @@ const SignIn = () => {
                                     activeOpacity={0.7}
                                 >
                                     {isPasswordVisible ? (
-                                        <EyeOff size={20} color="#000000" />
+                                        <EyeOff size={20} color="#000000"/>
                                     ) : (
-                                        <Eye size={20} color="#000000" />
+                                        <Eye size={20} color="#000000"/>
                                     )}
                                 </TouchableOpacity>
                             </View>
@@ -102,7 +106,8 @@ const SignIn = () => {
                             {/* Forgot Password Text */}
                             <View className="flex-row justify-end mt-2">
                                 <TouchableOpacity>
-                                    <Text className="text-blue-500 text-base font-normal font-['Roboto']">Forgot password?</Text>
+                                    <Text className="text-blue-500 text-base font-normal font-['Roboto']">Forgot
+                                        password?</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -121,7 +126,7 @@ const SignIn = () => {
                             className={"bg-white border border-gray-300 rounded-3xl w-full py-4 mt-5 h-14"}
                         >
                             <View className="flex-row items-center justify-center">
-                                <Image source={images.google} className="w-5 h-5" resizeMode="contain" />
+                                <Image source={images.google} className="w-5 h-5" resizeMode="contain"/>
                                 <Text className="text-black ml-2 font-poppins-semibold">Continue with Google</Text>
                             </View>
                         </TouchableOpacity>
@@ -131,7 +136,7 @@ const SignIn = () => {
                             className={"bg-white border border-gray-300 rounded-3xl w-full py-4 mt-5 h-14"}
                         >
                             <View className="flex-row items-center justify-center">
-                                <Image source={images.apple} className="w-5 h-5" resizeMode="contain" />
+                                <Image source={images.apple} className="w-5 h-5" resizeMode="contain"/>
                                 <Text className="text-black ml-2 font-poppins-semibold">Continue with Apple</Text>
                             </View>
                         </TouchableOpacity>

@@ -65,12 +65,15 @@ const Notifications = () => {
                         Today
                     </Text>
 
+
                     <NotificationCard text="{A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone!}" />
                     <NotificationCard text="{A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone!}" />
                     <NotificationCard text="{A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone!}" />
                     <NotificationCard text="{A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone!}" />
                     <NotificationCard text="{A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone!}" />
                     <NotificationCard text="{A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone! A parking spot has opened up 200 meters from your location. Book now before it's gone!}" />
+
+
 
 
                 </View>

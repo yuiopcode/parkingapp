@@ -5,7 +5,6 @@ import  * as AuthService from "@/app/services/AuthService";
 import  * as UserService from "@/app/services/UserService";
 import {getAccessToken, getRefreshToken, setAccessToken, setRefreshToken} from "@/app/utils/SecureStore";
 import handleError from "@/app/utils/ErrorHandler";
-import {unexpected} from "sucrase/dist/types/parser/traverser/util";
 
 export default class UserStore {
     isAuthenticated: boolean = false;

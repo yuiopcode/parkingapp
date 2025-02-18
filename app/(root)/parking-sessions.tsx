@@ -30,11 +30,21 @@ const ActiveSessionComponent = () => {
                             Aleja Wyzwolenia 33A, Szczecin, Poland
                         </Text>
                     </View>
-
                 </View>
 
             </View>
-            <Text className="font-poppins text-lg mt-2">Renault arkana</Text>
+            <View className="flex-row justify-between mt-2">
+                <View className="flex-col">
+                    <Text className="font-poppins text-lg mt-2">Renault Arkana</Text>
+                    <Text className="text-2xl font-poppins-semibold">WW 3090 WW</Text>
+                </View>
+                <View>
+                    <Text className="font-poppins text-lg mt-2">Money spent</Text>
+                    <Text className="text-2xl font-poppins-semibold text-right">$10.42</Text>
+                </View>
+            </View>
+
+
         </View>
     )
 }
@@ -47,21 +57,6 @@ const FinishedSessionComponent = () => {
     )
 }
 
-const ActiveSessions = () => {
-    return(
-        <View>
-            <ActiveSessionComponent></ActiveSessionComponent>
-        </View>
-    )
-}
-
-const FinishedSessions = () => {
-    return(
-        <View>
-            <FinishedSessionComponent/>
-        </View>
-    )
-}
 
 const ParkingSessions = () => {
 

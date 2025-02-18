@@ -16,11 +16,11 @@ import {
 
 import images from '../../constants/images';
 import BottomMenu from "@/app/components/BottomMenu";
-import {Stack} from "expo-router";
+import {useRouter} from "expo-router";
 
 const ParkingComponent = () => {
     return (
-        <>
+
             <View
                 className="w-auto h-auto bg-accent-100  rounded-2xl p-4 shadow-[0px_0px_15px_0px_rgba(0,0,0,0.15)] mb-4 mx-5">
                 <View className="flex-row overflow-hidden">
@@ -88,11 +88,12 @@ const ParkingComponent = () => {
                     </View>
                 </View>
             </View>
-        </>
     );
 };
 
 export default function Explore() {
+
+    const router = useRouter();
     return (
             <View className="flex-1 bg-[#FFF8F8]">
                 {/* Прокручиваемая часть */}
@@ -107,7 +108,7 @@ export default function Explore() {
                             </TouchableOpacity>
 
                             <TouchableOpacity
-                                className="size-12 mt-24 bg-[#fffcfc]/20 rounded-[24px] justify-center items-center">
+                                className="size-12 mt-24 bg-[#fffcfc]/20 rounded-[24px] justify-center items-center" onPress={() => router.push('/notifications')}>
                                 <Bell size={20} color="#fff"/>
                             </TouchableOpacity>
                         </View>

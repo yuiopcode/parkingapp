@@ -68,14 +68,7 @@ export default function RootLayout() {
         );
     }
 
-    if (
-        // !isAuthenticated &&
-        // !(
-        //     pathname.startsWith("/(auth)") &&
-        //     (pathname.includes("sign-in") || pathname.includes("sign-up"))
-        // )
-        false
-    ) {
+    if (!isAuthenticated && pathname.startsWith("/(root)")) {
         return <Context.Provider value={{userStore}}>
             <Slot/>
             <Redirect href="/welcome"/>
@@ -89,10 +82,23 @@ export default function RootLayout() {
         </Context.Provider>;
     }
 
+    if (pathname.length < 4 && isAuthenticated) {
+        return <Context.Provider value={{userStore}}>
+            <Slot/>
+            <Redirect href="/(root)/explore"/>
+        </Context.Provider>;
+    }
+
+    if (pathname.length < 4 && !isAuthenticated) {
+        return <Context.Provider value={{userStore}}>
+            <Slot/>
+            <Redirect href="/(auth)/welcome"/>
+        </Context.Provider>;
+    }
+
 
     console.log("isAuth: ", isAuthenticated)
     return (<Context.Provider value={{userStore}}>
         <Slot/>
-        <Redirect href="/(root)/explore"/>
     </Context.Provider>);
 }

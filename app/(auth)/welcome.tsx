@@ -2,7 +2,7 @@ import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native'
 import React from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 import { ArrowLeft } from 'lucide-react-native';
-import { NavigationContainer } from '@react-navigation/native'; // импортируем NavigationContainer
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import images from '../../constants/images';
 import icons from '../../constants/icons';
