@@ -9,7 +9,7 @@ import handleError from "@/app/utils/ErrorHandler";
 export default class UserStore {
     isAuthenticated: boolean = false;
     isLoading: boolean = true;
-    user: IUser = {} as IUser;
+    user: IUser | null = null;
 
     constructor() {
         makeAutoObservable(this);
@@ -73,6 +73,23 @@ export default class UserStore {
 
     setUser = (user: IUser) => {
         this.user = user;
+    }
+
+    fetchUser = async () => {
+        try {
+
+            const fetchedUser = await UserService.getUser();
+
+            console.log("User data:", fetchedUser);
+            this.setUser(fetchedUser.data);
+
+            return true;
+        } catch (e: unknown) {
+            handleError(e,"awibka");
+            const error = e as AxiosError;
+            console.log("Refresh token request failed:", error.response?.data);
+            return false;
+        }
     }
 
     async validateAuthentication(): Promise<boolean> {

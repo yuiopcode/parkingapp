@@ -1,9 +1,18 @@
- // используем API, который был настроен ранее
-
 import api from "@/app/http/api";
 
- export const getActiveParkingSession = async (): Promise<any> => {
-    const response = await api.get("/api/v1/sessions");
-    return response.data;
-};
+ export default class SessionService {
+     static async fetchSessions(userId: string, page:number, size:number) {
+         return api.get(`/api/v1/sessions/search`, {
+             params: {
+                 page,
+                 size,
+                 sort: "creationDate",
+                 direction: "desc",
+                 ownerId: userId,
+             }
+             ,
+         });
+     }
+
+ }
 

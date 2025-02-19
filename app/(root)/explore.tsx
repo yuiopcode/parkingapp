@@ -32,28 +32,9 @@ const ParkingComponent = () => {
                         />
                     </View>
                     <View className="flex-col ml-4">
-                        {/* tag container */}
-                        <View className="flex-row flex-wrap mb-1">
-                            {/* tag component */}
-                            <View className="bg-blue-600/70 rounded-2xl items-center px-3 py-1.5 mr-3 mb-1.5">
-                                <Text className="text-sm text-white leading-[13px] ">⏱️ 24/7</Text>
-                            </View>
-                            <View className="bg-blue-600/70 rounded-2xl items-center px-3 py-1.5 mr-3 mb-1.5">
-                                <Text className="text-sm text-white leading-[13px]">🚗 Parking Available</Text>
-                            </View>
-                            <View className="bg-blue-600/70 rounded-2xl items-center px-3 py-1.5 mr-3 mb-1.5">
-                                <Text className="text-sm text-white leading-[13px]">🔒 Secure</Text>
-                            </View>
-                            <View className="bg-blue-600/70 rounded-2xl items-center px-3 py-1.5 mr-3 mb-1.5">
-                                <Text className="text-sm text-white leading-[13px]">💰 Affordable</Text>
-                            </View>
-                        </View>
-
-                        {/* Основной текст */}
                         <View className="flex-wrap mb-2 max-w-full break-all">
                             <Text className="max-w-full text-black text-lg font-semibold">Galaxy Centrum Parking</Text>
                             <Text className="max-w-full text-gray-500 text-sm break-all">
-                                {/*ne mogu perenosit text on next line to fix*/}
                                 Szczecińska 70, 70-953 Szeczecin
                             </Text>
                         </View>

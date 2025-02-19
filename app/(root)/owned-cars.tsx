@@ -8,14 +8,12 @@ import images from "@/constants/images";
 const CarCard = () =>  {
     return (
         <View className="h-48 w-48 bg-gray-700 rounded-2xl">
-
-            <View className="h-3/5 bg-blue-400">
                 <Image
                     source={images.japan}
                     resizeMode={"cover"}
-                    className={"w-48 h-2/5"}
+                    className={"w-48 h-3/5"}
                 />
-            </View>
+
         </View>
 
     );

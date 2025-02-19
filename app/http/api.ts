@@ -7,7 +7,7 @@ const api = axios.create({
     timeout: 10000, // Максимальное время ожидания запроса
 });
 
-export const setTokenType = (type: "access" | "refresh") => {
+export const setTokenType = (type: "access" | "refresh" | "none") => {
     api.defaults.headers.common["Token-Type"] = type;
 };
 
@@ -15,7 +15,15 @@ api.interceptors.request.use(async (config) => {
     config.headers = config.headers || {};
 
     const tokenType = config.headers["Token-Type"] || "access";
-    const token = tokenType === "refresh" ? await getRefreshToken() : await getAccessToken();
+    let token;
+
+    if(tokenType == "access") {
+        token = await getAccessToken();
+    } else if (tokenType == "refresh") {
+        token = await getRefreshToken();
+    } else {
+        token = null;
+    }
 
     if (token) {
         console.log("Found token: ", token);

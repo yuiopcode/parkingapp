@@ -12,15 +12,20 @@ import {createContext, useEffect, useState} from "react";
 import UserStore from "@/app/store/UserStore";
 import {ActivityIndicator} from "react-native";
 import {View, Text} from 'react-native'
+import {SessionStore} from "@/app/store/SessionStore";
 
 const userStore = new UserStore();
+const sessionStore = new SessionStore();
+
 
 interface AppState {
     userStore: UserStore;
+    sessionStore: SessionStore;
 }
 
 export const Context = createContext<AppState>({
     userStore,
+    sessionStore,
 });
 
 export default function RootLayout() {
@@ -41,7 +46,7 @@ export default function RootLayout() {
     useEffect(() => {
         async function validateAuth() {
             const isAuth = await userStore.validateAuthentication();
-            setIsAuthenticated(true);
+            setIsAuthenticated(isAuth);
             setIsLoading(false);
             // SplashScreen.hideAsync(); // Скрытие SplashScreen после загрузки всех данных
         }
@@ -69,28 +74,28 @@ export default function RootLayout() {
     }
 
     if (!isAuthenticated && pathname.startsWith("/(root)")) {
-        return <Context.Provider value={{userStore}}>
+        return <Context.Provider value={{userStore, sessionStore}}>
             <Slot/>
             <Redirect href="/welcome"/>
         </Context.Provider>;
     }
 
     if (isAuthenticated && pathname.startsWith("/(auth)")) {
-        return <Context.Provider value={{userStore}}>
+        return <Context.Provider value={{userStore, sessionStore}}>
             <Slot/>
             <Redirect href="/(root)/explore"/>
         </Context.Provider>;
     }
 
     if (pathname.length < 4 && isAuthenticated) {
-        return <Context.Provider value={{userStore}}>
+        return <Context.Provider value={{userStore, sessionStore}}>
             <Slot/>
             <Redirect href="/(root)/explore"/>
         </Context.Provider>;
     }
 
     if (pathname.length < 4 && !isAuthenticated) {
-        return <Context.Provider value={{userStore}}>
+        return <Context.Provider value={{userStore, sessionStore}}>
             <Slot/>
             <Redirect href="/(auth)/welcome"/>
         </Context.Provider>;
@@ -98,7 +103,7 @@ export default function RootLayout() {
 
 
     console.log("isAuth: ", isAuthenticated)
-    return (<Context.Provider value={{userStore}}>
+    return (<Context.Provider value={{userStore, sessionStore}}>
         <Slot/>
     </Context.Provider>);
 }
